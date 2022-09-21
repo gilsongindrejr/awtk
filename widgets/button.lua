@@ -10,12 +10,6 @@ function Button:new(args)
     args.border_color = args.bg
   end
 
-  if not args.text then
-    args.text = 'Button'
-  end
-
-
-
   local button_config = {
     {
       {
