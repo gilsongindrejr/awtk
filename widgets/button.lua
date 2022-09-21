@@ -4,7 +4,7 @@ local gears = require('gears')
 Button = {}
 
 function Button:new(args)
-  -- shape, text, bg, border, border_color, top, bottom, left, right, hover, click
+  -- shape, text, icon, icon_height, space_between, bg, border, border_color, top, bottom, left, right, hover, click
 
   if not args.border_color then
     args.border_color = args.bg
@@ -14,11 +14,26 @@ function Button:new(args)
     args.text = 'Button'
   end
 
+
+
   local button_config = {
     {
       {
-        text = args.text,
-        widget = wibox.widget.textbox
+        {
+          {
+            image = args.icon,
+            resize = true,
+            forced_height = args.icon_height,
+            widget = wibox.widget.imagebox
+          },
+          right = args.space_between,
+          widget = wibox.container.margin
+        },
+        {
+          text = args.text,
+          widget = wibox.widget.textbox
+        },
+        layout = wibox.layout.align.horizontal
       },
       top = args.top,
       bottom = args.bottom,
